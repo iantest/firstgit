@@ -12,19 +12,17 @@ package {'Apache Web Server':
   ensure => 'installed',
   before => File['/etc/httpd/conf/httpd.conf'],
 }
-  
 file {'/etc/httpd/conf/httpd.conf':
   ensure => present,
   owner  => 'apache',
   group  => 'apache',
   source => '/root/examples/httpd.conf'
 }
-
 service {'httpd':
   ensure     => 'running',
-  enable     => 'true',
-  hasstatus  => 'true',
-  hasrestart => 'true',
+  enable     => true,
+  hasstatus  => true,
+  hasrestart => true,
   subscribe  => File['/etc/httpd/conf/httpd.conf']
   }
 }
