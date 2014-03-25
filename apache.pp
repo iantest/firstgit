@@ -1,5 +1,5 @@
 # Install Apache
-class apache {
+class apache ($version = 'latest') {
 case $operatingsystem {
   centos: {$apache = "httpd"}
   redhat: {$apache = "httpd"}
