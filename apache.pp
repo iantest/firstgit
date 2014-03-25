@@ -1,9 +1,9 @@
 # Install Apache
-class apache ($version = 'latest') {
+class apache {
 case $operatingsystem {
-  centos: {$apache = "httpd"}
-  redhat: {$apache = "httpd"}
-  debian: {$apache = "apache2"}
+  centos: {$apache = httpd}
+  redhat: {$apache = httpd}
+  debian: {$apache = apache2}
 }
 
 
@@ -14,8 +14,8 @@ package {'Apache Web Server':
 }
 file {'/etc/httpd/conf/httpd.conf':
   ensure => present,
-  owner  => 'apache',
-  group  => 'apache',
+  owner  => apache,
+  group  => apache,
   source => '/root/examples/httpd.conf'
 }
 service {'httpd':
